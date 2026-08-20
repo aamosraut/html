@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Modal</title>
+</head>
+<body>
+    <!-- The hidden pop-up window box layout -->
+<dialog id="promo-modal">
+    <h3>Flash Sale Alert!</h3>
+    <p>Get 50% off all coding courses using code <strong>HTML5PRO</strong>.</p>
+    <!-- Method value "dialog" auto-closes the modal layout upon submission -->
+    <form method="dialog">
+        <button>Close Window</button>
+    </form>
+</dialog>
+
+<!-- Quick buttons to control the modal screen view -->
+<button onclick="document.getElementById('promo-modal').showModal()">Open Promo Modal</button>
+
+</body>
+</html>

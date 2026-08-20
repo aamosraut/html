@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Form</title>
+</head>
+<body>
+    <form action="/update-profile" method="POST">
+    <!-- Auto-suggest search box using datalist -->
+    <label for="country-choice">Choose your country:</label>
+    <input list="countries" id="country-choice" name="country">
+    <datalist id="countries">
+        <option value="United States">
+        <option value="United Kingdom">
+        <option value="Canada">
+        <option value="Nepal">
+    </datalist>
+
+    <!-- Native slider range component -->
+    <label for="skill-level">Skill Level (1-10):</label>
+    <input type="range" id="skill-level" name="skill-level" min="1" max="10" step="1">
+
+    <!-- Color picker interface -->
+    <label for="theme-color">Choose Profile Theme Color:</label>
+    <input type="color" id="theme-color" name="theme-color" value="#3498db">
+
+    <!-- Date selector restriction -->
+    <label for="appointment">Preferred Date:</label>
+    <input type="date" id="appointment" name="appointment" min="2026-01-01">
+
+    <button type="submit">Save Preferences</button>
+</form>
+
+</body>
+</html>

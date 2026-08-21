@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do App</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background-color: #f7f9fa;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .todo-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 350px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f3f5;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-card">
+        <h3>My Task List</h3>
+        <div class="input-row">
+            <input type="text" id="task-input" placeholder="Add a new task...">
+            <button id="add-btn">Add</button>
+        </div>
+        <ul id="task-list">
+            <!-- JavaScript will insert tasks here dynamically -->
+        </ul>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const addBtn = document.getElementById('add-btn');
+        const taskList = document.getElementById('task-list');
+
+        addBtn.addEventListener('click', () => {
+            const taskText = taskInput.value.trim();
+            
+            if (taskText === "") return; // Don't add blank items
+
+            // 1. Create a brand new list element 
+            const li = document.createElement('li');
+            
+            // 2. Add text and a delete button markup to it
+            li.innerHTML = `
+                <span>${taskText}</span>
+                <button class="delete-btn">X</button>
+            `;
+
+            // 3. Attach a functional click listener right to the delete button inside this task
+            li.querySelector('.delete-btn').addEventListener('click', () => {
+                li.remove();
+            });
+
+            // 4. Inject the finished row into our list
+            taskList.appendChild(li);
+
+            // 5. Clear the text input box
+            taskInput.value = "";
+        });
+    </script>
+</body>
+</html>

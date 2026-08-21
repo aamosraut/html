@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion FAQ</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; }
+        .acc-item { border: 1px solid #ddd; margin-bottom: 5px; border-radius: 4px; overflow: hidden; }
+        .acc-header { background: #f1f1f1; padding: 15px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; }
+        .acc-body { padding: 15px; display: none; background: white; border-top: 1px solid #ddd; }
+        .acc-item.open .acc-body { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="acc-item">
+        <div class="acc-header">What is HTML? <span>+</span></div>
+        <div class="acc-body">HyperText Markup Language standard layout tools.</div>
+    </div>
+    <div class="acc-item">
+        <div class="acc-header">What is CSS? <span>+</span></div>
+        <div class="acc-body">Cascading Style Sheets control presentation templates.</div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.acc-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('open');
+                header.querySelector('span').textContent = item.classList.contains('open') ? '-' : '+';
+            });
+        });
+    </script>
+</body>
+</html>

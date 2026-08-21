@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #eef2f3; margin:0;}
+        .container { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 400px; }
+        textarea { width: 95%; height: 120px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: none; }
+        .stats { display: flex; justify-content: space-between; margin-top: 15px; font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Text Analyzer</h3>
+        <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+        <div class="stats">
+            <div>Characters: <span id="char-count">0</span></div>
+            <div>Words: <span id="word-count">0</span></div>
+        </div>
+    </div>
+
+    <script>
+        const tx = document.getElementById('text-input');
+        const charCount = document.getElementById('char-count');
+        const wordCount = document.getElementById('word-count');
+
+        tx.addEventListener('input', () => {
+            const text = tx.value;
+            charCount.textContent = text.length;
+            
+            // Split by spaces and filter out empty string blocks
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = words.length;
+        });
+    </script>
+</body>
+</html>

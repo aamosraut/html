@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body { font-family: sans-serif; max-width: 320px; margin: 60px auto; }
+        input { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+        .err { color: red; font-size: 0.85rem; margin-top: 2px; display: none; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; margin-top: 15px; cursor: pointer;}
+    </style>
+</head>
+<body>
+
+    <form id="my-form">
+        <label>Email Address</label>
+        <input type="text" id="email">
+        <div id="email-err" class="err">Please enter a valid email.</div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('my-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const err = document.getElementById('email-err');
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                err.style.display = 'block';
+            } else {
+                err.style.display = 'none';
+                alert('Form verified successfully!');
+            }
+        });
+    </script>
+</body>
+</html>

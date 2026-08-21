@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Digital Clock</title>
+    <style>
+        body {
+            background: #0f2027;  
+            background: linear-gradient(to right, #203a43, #0f2027); 
+            color: #00ffcc;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .clock-container {
+            border: 4px solid #00ffcc;
+            padding: 20px 40px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px #00ffcc;
+            text-align: center;
+        }
+
+        #clock {
+            font-size: 3.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <h2>CURRENT TIME</h2>
+        <div id="clock">00:00:00</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            // Format time strings and force them to be 2 digits using padStart
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            // Display time string
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Run the clock immediately, then trigger it every 1000 milliseconds (1 second)
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Tooltip</title>
+</head>
+<body>
+    <p>Hover over this <span class="has-tooltip" data-tip="Hidden Insight Active!">special word</span> to read details.</p>
+<style>
+  .has-tooltip { text-decoration: underline; color: blue; cursor: help; position: relative; font-family: sans-serif; }
+  .has-tooltip::after {
+    content: attr(data-tip); display: none; position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
+    background: #333; color: white; padding: 5px; font-size: 12px; border-radius: 4px; white-space: nowrap;
+  }
+  .has-tooltip:hover::after { display: block; }
+</style>
+
+</body>
+</html>

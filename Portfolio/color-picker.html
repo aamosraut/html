@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+</head>
+<body>
+    <div class="picker-box">
+  <input type="color" id="picker" value="#ff0000">
+  <span id="hex-val">#ff0000</span>
+</div>
+<style>
+  .picker-box { display: flex; align-items: center; gap: 10px; font-family: monospace; font-size: 18px; }
+  input { cursor: pointer; border: none; width: 40px; height: 40px; }
+</style>
+<script>
+  document.getElementById('picker').oninput = function() {
+    document.getElementById('hex-val').innerText = this.value;
+  };
+</script>
+
+</body>
+</html>

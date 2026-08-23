@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Zoom</title>
+</head>
+<body>
+    <div class="img-frame">
+  <img src="https://picsum.photos" alt="Zoom Target">
+</div>
+<style>
+  .img-frame { width: 200px; height: 200px; overflow: hidden; border: 1px solid #ddd; }
+  .img-frame img { width: 100%; height: 100%; transition: transform 0.3s ease; }
+  .img-frame:hover img { transform: scale(1.5); }
+</style>
+
+</body>
+</html>

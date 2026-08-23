@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+</head>
+<body>
+    <div class="rating">
+  <span class="star" data-v="1">&#9733;</span><span class="star" data-v="2">&#9733;</span><span class="star" data-v="3">&#9733;</span><span class="star" data-v="4">&#9733;</span><span class="star" data-v="5">&#9733;</span>
+</div>
+<style>
+  .star { font-size: 30px; cursor: pointer; color: #ccc; transition: 0.1s; }
+  .star.active { color: gold; }
+</style>
+<script>
+  const stars = document.querySelectorAll('.star');
+  stars.forEach(star => {
+    star.onclick = function() {
+      let val = this.getAttribute('data-v');
+      stars.forEach(s => s.classList.toggle('active', s.getAttribute('data-v') <= val));
+    };
+  });
+</script>
+
+</body>
+</html>

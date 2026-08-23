@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Word Counter</title>
+</head>
+<body>
+    <div>
+  <textarea id="editor" placeholder="Start typing..."></textarea>
+  <div id="metrics">Words: 0 | Characters: 0</div>
+</div>
+<style>
+  textarea { width: 300px; height: 100px; font-family: sans-serif; }
+  #metrics { font-family: monospace; font-size: 12px; margin-top: 5px; }
+</style>
+<script>
+  document.getElementById('editor').oninput = function() {
+    let txt = this.value.trim();
+    let words = txt === "" ? 0 : txt.split(/\s+/).length;
+    document.getElementById('metrics').innerText = `Words: ${words} | Characters: ${this.value.length}`;
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <div class="game">
+  <button onclick="play('Rock')">Rock</button><button onclick="play('Paper')">Paper</button><button onclick="play('Scissors')">Scissors</button>
+  <p id="game-output">Choose your weapon!</p>
+</div>
+<style>.game { font-family: sans-serif; text-align: center; padding: 20px; border: 1px dashed navy; width: 300px; }</style>
+<script>
+  function play(pChoice) {
+    const opts = ['Rock', 'Paper', 'Scissors'];
+    const cChoice = opts[Math.floor(Math.random() * 3)];
+    let res = pChoice === cChoice ? "It's a tie!" : 
+             (pChoice==='Rock' && cChoice==='Scissors') || (pChoice==='Paper' && cChoice==='Rock') || (pChoice==='Scissors' && cChoice==='Paper') ? "You win!" : "You lose!";
+    document.getElementById('game-output').innerText = `You: ${pChoice} | AI: ${cChoice} -> ${res}`;
+  }
+</script>
+
+</body>
+</html>

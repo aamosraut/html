@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+</head>
+<body>
+    <div id="drop-zone">Drag & Drop file here</div>
+  #drop-zone.hover { border-color: #333; background: #f0f0f0; color: #333; }
+</style>
+<script>
+  const zone = document.getElementById('drop-zone');
+  zone.ondragover = (e) => { e.preventDefault(); zone.classList.add('hover'); };
+  zone.ondragleave = () => zone.classList.remove('hover');
+  zone.ondrop = (e) => {
+    e.preventDefault();
+    zone.classList.remove('hover');
+    zone.innerText = e.dataTransfer.files[0].name;
+  };
+</script>
+
+</body>
+</html>

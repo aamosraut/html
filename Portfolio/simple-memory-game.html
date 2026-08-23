@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Memory Game</title>
+</head>
+<body>
+    <div id="grid"></div>
+<style>
+  #grid { display: grid; grid-template-columns: repeat(2, 60px); gap: 10px; font-family: sans-serif; }
+  .tile { width: 60px; height: 60px; background: #333; color: #333; text-align: center; line-height: 60px; font-size: 24px; cursor: pointer; user-select: none; }
+  .tile.revealed { background: #bbb; color: #fff; }
+</style>
+<script>
+  const data = ['A', 'B', 'A', 'B'], activeTiles = [];
+  const grid = document.getElementById('grid');
+  data.forEach((val, idx) => {
+    let tile = document.createElement('div'); tile.className = 'tile'; tile.innerText = val; tile.dataset.idx = idx;
+    tile.onclick = function() {
+      if (this.classList.contains('revealed') || activeTiles.length === 2) return;
+      this.classList.add('revealed'); activeTiles.push(this);
+      if (activeTiles.length === 2) {
+        if (activeTiles[0].innerText !== activeTiles[1].innerText) {
+          setTimeout(() => { activeTiles.forEach(t => t.classList.remove('revealed')); activeTiles.length = 0; }, 800);
+        } else activeTiles.length = 0;
+      }
+    };
+    grid.appendChild(tile);
+  });
+</script>
+
+</body>
+</html>

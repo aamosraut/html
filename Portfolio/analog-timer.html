@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Timer</title>
+</head>
+<body>
+    <div class="timer-box">
+  <h2 id="time-display">25:00</h2>
+  <button id="start-btn">Start</button>
+  <button id="reset-btn">Reset</button>
+</div>
+<style>
+  .timer-box { font-family: sans-serif; text-align: center; border: 2px solid #333; width: 180px; padding: 15px; }
+  button { margin: 5px; cursor: pointer; }
+</style>
+<script>
+  let timer, seconds = 1500, active = false;
+  const disp = document.getElementById('time-display');
+  function updateDisp() {
+    disp.innerText = `${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`;
+  }
+  document.getElementById('start-btn').onclick = function() {
+    if (active) return; active = true;
+    timer = setInterval(() => { if(seconds > 0) { seconds--; updateDisp(); } else clearInterval(timer); }, 1000);
+  };
+  document.getElementById('reset-btn').onclick = function() {
+    clearInterval(timer); active = false; seconds = 1500; updateDisp();
+  };
+</script>
+
+</body>
+</html>

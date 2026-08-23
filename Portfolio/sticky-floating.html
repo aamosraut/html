@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Floating</title>
+</head>
+<body>
+    <div class="hero">Scroll down to anchor navbar</div>
+<nav id="navbar">My Sticky Navbar</nav>
+<div style="height:1500px; background:#fafafa; padding:20px;">Content zone...</div>
+<style>
+  body { margin: 0; font-family: sans-serif; }
+  .hero { height: 150px; background: lightcoral; text-align: center; line-height: 150px; color: white; }
+  #navbar { background: #333; color: white; padding: 15px; width: 100%; box-sizing: border-box; }
+  #navbar.sticky { position: fixed; top: 0; left: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+</style>
+<script>
+  const nav = document.getElementById('navbar');
+  const offset = nav.offsetTop;
+  window.onscroll = () => nav.classList.toggle('sticky', window.scrollY >= offset);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard</title>
+</head>
+<body>
+    <div>
+  <input type="text" id="copy-target" value="Secret Token 99X">
+  <button id="copy-btn">Copy Text</button>
+</div>
+<style>input, button { padding: 5px; font-family: sans-serif; }</style>
+<script>
+  document.getElementById('copy-btn').onclick = function() {
+    let inputEl = document.getElementById('copy-target');
+    inputEl.select();
+    navigator.clipboard.writeText(inputEl.value);
+    this.innerText = "Copied!";
+    setTimeout(() => this.innerText = "Copy Text", 1500);
+  };
+</script>
+
+</body>
+</html>
